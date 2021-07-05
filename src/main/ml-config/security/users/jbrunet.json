@@ -1,0 +1,14 @@
+{
+  "user-name": "jbrunet",
+  "description": "Jeremy Brunet account",
+  "password": "jbrunet",
+  "role": [
+    "hub-central-developer",
+    "data-hub-developer",
+    "pii-reader",
+    "temporal-admin",
+    "qconsole-user",
+    "qconsole-internal",
+    "data-hub-common"
+  ]
+}

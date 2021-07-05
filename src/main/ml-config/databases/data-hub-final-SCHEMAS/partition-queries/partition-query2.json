@@ -1,0 +1,9 @@
+{
+    "partition-number": 2,
+    "query": {
+        "jsonPropertyValueQuery": {
+            "property": "CdNatCtr",
+            "value": "RO"
+        }
+    }
+}

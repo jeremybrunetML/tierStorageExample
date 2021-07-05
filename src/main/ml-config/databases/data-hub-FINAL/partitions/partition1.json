@@ -1,0 +1,12 @@
+
+{
+	"partition-name": "hot",
+	"partition-number": "1",
+    "forests-per-host": 3,
+    "host": [
+		"macpro-4632.local"
+	],
+	"option": [
+		"failover=none"
+	]
+}

@@ -1,0 +1,53 @@
+{
+  "info": {
+    "title": "Contrat",
+    "version": "1.0.0",
+    "baseUri": "http://example.org/"
+  },
+  "definitions": {
+    "Contrat": {
+      "primaryKey": "IdCtr",
+      "required": [ ],
+      "pii": [ ],
+      "elementRangeIndex": [ ],
+      "rangeIndex": [ ],
+      "wordLexicon": [ ],
+      "properties": {
+        "IdCtr": {
+          "datatype": "string",
+          "collation": "http://marklogic.com/collation/codepoint"
+        },
+        "DtDebCtr": {
+          "datatype": "date",
+          "collation": "http://marklogic.com/collation/codepoint"
+        },
+        "DtFinCtr": {
+          "datatype": "date",
+          "collation": "http://marklogic.com/collation/codepoint"
+        },
+        "CdNatCtr": {
+          "datatype": "string",
+          "collation": "http://marklogic.com/collation/codepoint"
+        },
+        "aDomBancaire": {
+          "datatype": "array",
+          "items": {
+            "$ref": "http://example.org/DomiciliationBancaire-1.0.0/DomiciliationBancaire"
+          }
+        },
+        "estViseParDossierContentieux": {
+          "datatype": "array",
+          "items": {
+            "$ref": "http://example.org/DossierContentieux-1.0.0/DossierContentieux"
+          }
+        },
+        "aStatut": {
+          "datatype": "array",
+          "items": {
+            "$ref": "http://example.org/Statut-1.0.0/Statut"
+          }
+        }
+      }
+    }
+  }
+}

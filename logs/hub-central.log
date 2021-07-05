@@ -1,0 +1,10 @@
+2021-06-25 07:08:53,777 INFO com.marklogic.appdeployer.DefaultAppConfigFactory [http-nio-8080-exec-1] App host: localhost
+2021-06-25 07:08:53,815 INFO com.marklogic.appdeployer.DefaultAppConfigFactory [http-nio-8080-exec-1] REST admin username: mmaachou
+2021-06-25 07:08:53,817 INFO com.marklogic.appdeployer.DefaultAppConfigFactory [http-nio-8080-exec-1] App Services username: mmaachou
+2021-06-25 07:08:53,819 INFO com.marklogic.mgmt.admin.DefaultAdminConfigFactory [http-nio-8080-exec-1] Admin interface host: localhost
+2021-06-25 07:08:53,819 INFO com.marklogic.mgmt.admin.DefaultAdminConfigFactory [http-nio-8080-exec-1] Admin interface username: mmaachou
+2021-06-25 07:08:53,820 INFO com.marklogic.mgmt.DefaultManageConfigFactory [http-nio-8080-exec-1] Manage host: localhost
+2021-06-25 07:08:53,821 INFO com.marklogic.mgmt.DefaultManageConfigFactory [http-nio-8080-exec-1] Manage username: mmaachou
+2021-06-25 07:08:53,821 INFO com.marklogic.mgmt.DefaultManageConfigFactory [http-nio-8080-exec-1] Manage user with security role: mmaachou
+2021-06-25 07:08:53,951 INFO com.marklogic.mgmt.ManageClient [http-nio-8080-exec-1] Initializing ManageClient with manage config of: [ManageConfig host: localhost, port: 8002, username: mmaachou, security username: mmaachou]
+2021-06-25 07:08:54,084 INFO com.marklogic.mgmt.ManageClient [http-nio-8080-exec-1] Initializing ManageClient with manage config of: [ManageConfig host: localhost, port: 8002, username: mmaachou, security username: mmaachou]

@@ -1,0 +1,13 @@
+
+{
+	"partition-name": "tier1",
+	"partition-number": "2",
+    "forests-per-host": 3,
+    "host": [
+		"macpro-4632.local"
+	],
+	"option": [
+		"failover=none"
+	],
+    "data-directory": "/Users/jbrunet/partition2"
+}
