@@ -1,3 +1,8 @@
+# Purpose of the project
+
+This example will help you to configure a tier storage for your existing DHF. 
+The trick is to create a partition with 0 forest, then rename the existing one to the standard format + assign the forests to it.
+
 # Installation instruction 
 
 ## Deploy DataHub:
