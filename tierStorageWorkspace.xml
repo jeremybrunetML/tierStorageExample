@@ -1,4 +1,4 @@
-<export><workspace name="Workspace 1"><query name="2 default partition" focus="false" listorder="1" taborder="2" active="true" database="5662887449775435508" server="385635851005310232" database-name="data-hub-FINAL" server-name="data-hub-FINAL" mode="javascript">'use strict';
+<export><workspace name="Workspace 1"><query name="3 default partition" focus="false" listorder="1" taborder="2" active="true" database="12727500845346638917" server="14923191952123773660" database-name="data-hub-FINAL" server-name="data-hub-FINAL" mode="javascript">'use strict';
 
 
 const ts = require('/MarkLogic/tieredstorage');
@@ -10,7 +10,7 @@ ts.queryPartitionCreate(
    1,
    0,
    xdmp.host('macpro-4632.local')
-);</query><query name="1 query assignment" focus="false" listorder="2" taborder="1" active="true" database="5662887449775435508" server="385635851005310232" database-name="data-hub-FINAL" server-name="data-hub-FINAL" mode="javascript">'use strict';
+);</query><query name="2 query assignment" focus="false" listorder="2" taborder="1" active="true" database="12727500845346638917" server="14923191952123773660" database-name="data-hub-FINAL" server-name="data-hub-FINAL" mode="javascript">'use strict';
 
 const admin = require('/MarkLogic/admin');
 
@@ -22,7 +22,7 @@ let newConfig =  admin.databaseSetAssignmentPolicy(config, dbId, policy);
 admin.saveConfiguration(newConfig)
 // Returns the new configuration element -- use admin.saveConfiguration
 // to save the changes to the configuration or pass the configuration
-// to other Admin API functions to make other changes.</query><query name="3 rename forests" focus="false" listorder="3" taborder="3" active="true" database="5662887449775435508" server="385635851005310232" database-name="data-hub-FINAL" server-name="data-hub-FINAL" mode="javascript">'use strict';
+// to other Admin API functions to make other changes.</query><query name="4 rename forests" focus="false" listorder="3" taborder="3" active="true" database="12727500845346638917" server="14923191952123773660" database-name="data-hub-FINAL" server-name="data-hub-FINAL" mode="javascript">'use strict';
 
 const admin = require('/MarkLogic/admin.xqy');
 let nbOfForests = 3
@@ -46,7 +46,7 @@ admin.saveConfiguration(config)
 errors
 
 
-</query><query name="4 set forests to partition" focus="false" listorder="4" taborder="4" active="true" database="5662887449775435508" server="385635851005310232" database-name="data-hub-FINAL" server-name="data-hub-FINAL" mode="javascript">'use strict';
+</query><query name="5 set forests to partition" focus="false" listorder="4" taborder="4" active="true" database="12727500845346638917" server="14923191952123773660" database-name="data-hub-FINAL" server-name="data-hub-FINAL" mode="javascript">'use strict';
 
 const admin = require('/MarkLogic/admin.xqy');
 let config = admin.getConfiguration()
@@ -60,7 +60,7 @@ for (let index = 1; index &lt;= nbOfForests; ++index) {
 
 
 admin.saveConfiguration(config)
-</query><query name="5 create tier1 partition" focus="false" listorder="5" taborder="5" active="true" database="5662887449775435508" server="385635851005310232" database-name="data-hub-FINAL" server-name="data-hub-FINAL" mode="javascript">'use strict';
+</query><query name="6 create tier1 partition" focus="false" listorder="5" taborder="5" active="true" database="12727500845346638917" server="14923191952123773660" database-name="data-hub-FINAL" server-name="data-hub-FINAL" mode="javascript">'use strict';
 
 
 const ts = require('/MarkLogic/tieredstorage');
@@ -73,7 +73,7 @@ ts.queryPartitionCreate(
    3,
    xdmp.host('macpro-4632.local'),
   "/Users/jbrunet/partition2"
-);</query><query name="6 set query partition" focus="true" listorder="6" taborder="6" active="true" database="18236407357308556763" server="1738228799937363106" database-name="data-hub-final-SCHEMAS" server-name="App-Services" mode="javascript">'use strict';
+);</query><query name="7 set query partition" focus="false" listorder="6" taborder="6" active="true" database="12727500845346638917" server="14923191952123773660" database-name="data-hub-FINAL" server-name="data-hub-FINAL" mode="javascript">'use strict';
 
 // Sets the query for partition 1 in the Schemas database so that
 // the documents with a LastModified date within last year will 
@@ -85,4 +85,15 @@ declareUpdate();
 ts.partitionSetQuery(
    xdmp.schemaDatabase(xdmp.database('data-hub-FINAL')),
   2,
-  cts.jsonPropertyValueQuery("CdNatCtr","RC"));</query></workspace></export>
+  cts.jsonPropertyValueQuery("CdNatCtr","RC"));</query><query name="1. strict locking" focus="true" listorder="7" taborder="7" active="true" database="12727500845346638917" server="14923191952123773660" database-name="data-hub-FINAL" server-name="data-hub-FINAL" mode="javascript">'use strict';
+
+  
+  const admin = require('/MarkLogic/admin.xqy');
+  const config = admin.getConfiguration()
+  admin.databaseSetLocking(config, xdmp.database("data-hub-FINAL"),
+        "strict")
+  admin.saveConfiguration(config)
+
+   //returns the new configuration element -- use admin.saveConfiguration
+   //to save the changes to the configuration or pass the configuration
+   //to other Admin API functions to make other changes.  </query></workspace></export>
