@@ -3,6 +3,7 @@ buildscript {
 			println "Using online buildscript dependency repositories"
 			jcenter()
 			maven { url "http://developer.marklogic.com/maven2/" }
+	}
 }
 
 plugins {
