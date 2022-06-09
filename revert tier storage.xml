@@ -1,0 +1,135 @@
+<export><workspace name="Workspace 2"><query name="7. fast locking" focus="true" listorder="1" taborder="2" active="true" database="9810354460708727325" server="703141971511690025" database-name="data-hub-FINAL" server-name="data-hub-FINAL" mode="javascript">'use strict';
+
+  
+  const admin = require('/MarkLogic/admin.xqy');
+  let config = admin.getConfiguration()
+  config = admin.databaseSetLocking(config, xdmp.database("data-hub-FINAL"),
+        "fast")
+  admin.saveConfiguration(config)
+
+   //returns the new configuration element -- use admin.saveConfiguration
+   //to save the changes to the configuration or pass the configuration
+   //to other Admin API functions to make other changes.  </query><query name="3 - delete partition" focus="false" listorder="2" taborder="1" active="true" database="9810354460708727325" server="703141971511690025" database-name="data-hub-FINAL" server-name="data-hub-FINAL" mode="javascript">'use strict';
+const ts = require('/MarkLogic/tieredstorage');
+declareUpdate();
+
+
+ts.partitionDelete(
+      xdmp.database('data-hub-FINAL'),
+     'tier1',
+  false
+)
+
+ts.partitionDelete(
+      xdmp.database('data-hub-FINAL'),
+     'hot',
+  false
+)</query><query name="2- detachForest" focus="false" listorder="3" taborder="3" active="true" database="9810354460708727325" server="703141971511690025" database-name="data-hub-FINAL" server-name="data-hub-FINAL" mode="javascript">'use strict';
+
+
+const admin = require('/MarkLogic/admin.xqy');
+let config = admin.getConfiguration()
+let nbOfForests = 3
+let prefix = "tier1-000"
+
+
+for (let index = 1; index &lt;= nbOfForests; ++index) {
+  const forestid = admin.forestGetId(config, prefix+index)
+  config = admin.databaseDetachForest(config, xdmp.database("data-hub-FINAL"), forestid)
+}
+
+
+admin.saveConfiguration(config)
+
+
+nbOfForests = 3
+prefix = "hot-000"
+
+for (let index = 1; index &lt;= nbOfForests; ++index) {
+  const forestid = admin.forestGetId(config, prefix+index)
+  config = admin.databaseDetachForest(config, xdmp.database("data-hub-FINAL"), forestid)
+}
+admin.saveConfiguration(config)</query><query name="4 - rename forests" focus="false" listorder="4" taborder="4" active="true" database="9810354460708727325" server="703141971511690025" database-name="data-hub-FINAL" server-name="data-hub-FINAL" mode="javascript">'use strict';
+
+const admin = require('/MarkLogic/admin.xqy');
+let nbOfForests = 3
+let forestPrefix = "Datahub-FINAL-"
+let newPrefix = "data-hub-FINAL-"
+let errors = []
+let  config = null
+for (let index = 1; index &lt;= nbOfForests; ++index) {
+  try{
+   let forestId = admin.forestGetId(
+     admin.getConfiguration(),
+     forestPrefix + index
+  ) 
+
+config = admin.forestRename(admin.getConfiguration(), forestId, fn.replace(forestPrefix + index, forestPrefix, newPrefix))
+admin.saveConfiguration(config)
+  } catch (error) {
+ errors.push(error)
+  }
+
+}
+
+errors
+
+
+</query><query name="1 - set false query to rebalance data" focus="false" listorder="5" taborder="5" active="true" database="9810354460708727325" server="703141971511690025" database-name="data-hub-FINAL" server-name="data-hub-FINAL" mode="javascript">'use strict';
+
+// Sets the query for partition 2 in the Schemas database so that
+// the documents will go to partition 1
+
+const ts = require('/MarkLogic/tieredstorage');
+
+declareUpdate();
+ts.partitionSetQuery(
+   xdmp.schemaDatabase(xdmp.database('data-hub-FINAL')),
+  2,
+  cts.falseQuery());
+  
+</query><query name="5 - Forest delete" focus="false" listorder="6" taborder="6" active="true" database="9810354460708727325" server="703141971511690025" database-name="data-hub-FINAL" server-name="data-hub-FINAL" mode="javascript">'use strict';
+
+'use strict';
+
+const admin = require('/MarkLogic/admin.xqy');
+let nbOfForests = 3
+let forestPrefix = "tier1-000"
+let errors = []
+let  config = null
+for (let index = 1; index &lt;= nbOfForests; ++index) {
+  try{
+   let forestId = admin.forestGetId(
+     admin.getConfiguration(),
+     forestPrefix + index
+  ) 
+
+config = admin.forestDelete(admin.getConfiguration(),forestId, true)
+admin.saveConfiguration(config)
+  } catch (error) {
+ errors.push(error)
+  }
+
+}
+errors
+
+
+
+</query><query name="6 - attach forest" focus="false" listorder="7" taborder="7" active="true" database="9810354460708727325" server="703141971511690025" database-name="data-hub-FINAL" server-name="data-hub-FINAL" mode="javascript">'use strict';
+
+
+const admin = require('/MarkLogic/admin.xqy');
+let config = admin.getConfiguration()
+let nbOfForests = 3
+let prefix = "data-hub-FINAL-"
+
+
+for (let index = 1; index &lt;= nbOfForests; ++index) {
+  const forestid = admin.forestGetId(config, prefix+index)
+  config = admin.databaseAttachForest(config, xdmp.database("data-hub-FINAL"), forestid)
+}
+
+
+admin.saveConfiguration(config)
+
+</query></workspace></export>

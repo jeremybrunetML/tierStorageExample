@@ -1,1 +1,6 @@
 build
+.gradle/6.4/executionHistory/executionHistory.lock
+.gradle/checksums/md5-checksums.bin
+.gradle/checksums/sha1-checksums.bin
+bin/main/com/marklogic/sample/Api$1ApiImpl.class
+bin/main/com/marklogic/sample/Api.class
